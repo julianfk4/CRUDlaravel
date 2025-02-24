@@ -6,14 +6,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Mi Perfil</div>
-
+                    
                 <div class="card-body">
+                <p class="h5"> Mis productos:</p>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">Productos de la comunidad</div>
-
                 <div class="card-body">
+                
             </div>
         </div>
     </div>
