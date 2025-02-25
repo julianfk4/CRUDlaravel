@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Mi Perfil</div>
+                <div class="card-header">Mi Perfil: {{ $user -> name }}</div>
                     
                 <div class="card-body">
                 <p class="h5"> Mis productos:</p>

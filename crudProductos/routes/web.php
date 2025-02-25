@@ -17,4 +17,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('login', [App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 
-Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard/{id}', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+
