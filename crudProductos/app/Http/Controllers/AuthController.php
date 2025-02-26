@@ -13,29 +13,31 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-{
-    // Valida los datos del formulario
-    $credentials = $request->validate([
-        'email'    => ['required', 'email'],
-        'password' => ['required'],
-    ]);
+    {
+        
+        
+        // Valida los datos del formulario
+        $credentials = $request->validate([
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-    // Intenta autenticar al usuario
-    if (Auth::attempt($credentials, $request->boolean('remember'))) {
-        // Regenera la sesión para evitar ataques de fijación de sesión
-        $request->session()->regenerate();
+        // Intenta autenticar al usuario
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            // Regenera la sesión para evitar ataques de fijación de sesión
+            $request->session()->regenerate();
 
-        // Obtiene el ID del usuario autenticado
-        $id = Auth::id(); 
+            // Obtiene el ID del usuario autenticado
+            $id = Auth::id(); 
 
-        // Redirige al dashboard pasando el ID
-        return redirect()->route('dashboard', ['id' => $id]);
+            // Redirige al dashboard pasando el ID
+            return redirect()->route('dashboard', ['id' => $id]);
+        }
+
+        // Si la autenticación falla, redirige de vuelta con un error
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ]);
     }
-
-    // Si la autenticación falla, redirige de vuelta con un error
-    return back()->withErrors([
-        'email' => 'Las credenciales no coinciden con nuestros registros.',
-    ]);
-}
 
 }

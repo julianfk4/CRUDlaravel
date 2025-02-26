@@ -13,10 +13,11 @@ class DashboardController extends Controller
         
         $user = User::findOrFail($id);
         $id_user = $id;
-        $post = Post::findOrFail($id_user);
-        $producto = Producto::findOrFail($id_user);
+        
+        $post = Post::find($id_user);
+        $producto = Producto::find($id_user);
 
         
-        return view("home", compact('user'));
+        return view("home", compact('user','post','producto'));
     }
 }
