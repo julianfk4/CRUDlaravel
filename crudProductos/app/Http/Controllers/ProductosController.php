@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ProductosController extends Controller
 {
     public function index(int $id)
@@ -32,7 +32,7 @@ class ProductosController extends Controller
          // Crear el producto en la base de datos
         Producto::create($data);
         // Redirigir a una ruta (por ejemplo, al listado de productos) con un mensaje de éxito
-        return redirect()->route('login')
+        return redirect()->to(url('dashboard/' . Auth::user()->id))
             ->with('success', 'Producto registrado correctamente');
     }
         

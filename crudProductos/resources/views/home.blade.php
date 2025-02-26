@@ -10,7 +10,7 @@
                 <div class="card-body">
                 <p class="h8"><u> Mis productos:</u></p>
                 @if ($producto)
-                    <div class="container mt-4">
+                    <div class="container mt-6">
                     <div class="row">
                         @foreach ($productos as $prod)
                             <div class="col-md-4"> 
