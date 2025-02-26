@@ -22,3 +22,7 @@ Route::get('crear/{id}', [App\Http\Controllers\ProductosController::class, 'crea
 Route::post('guardar', [App\Http\Controllers\ProductosController::class, 'guardar'])->name('guardar');
 
 Route::get('detail/{id}', [App\Http\Controllers\ProductosController::class, 'index'])->name('index');
+
+Route::get('edit/{id}', [App\Http\Controllers\ProductosController::class, 'editar'])->name('editar');
+
+Route::get('borrar/{id}', [App\Http\Controllers\ProductosController::class, 'borrar'])->name('borrar');

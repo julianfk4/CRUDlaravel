@@ -51,11 +51,21 @@
             <div class="card">
                 <div class="card-header">Productos de la comunidad</div>
                 @if ($producto)
+                    <div class="card-body">
                     @foreach ($productos as $prods)
-                        <p>{{ $prods->name }}</p>
+                        <div class="col-md-4"> 
+                                <a href="/detail/{{ $prods->id }}">
+                                <div class="card shadow-sm">
+                                    <div class="card-body d-flex flex-column align-items-center">
+                                        <p class="fw-bold">{{ $prods->name }}</p>
+                                        <img src="{{ $prods->imagen }}" alt="Imagen del producto" class="img-fluid" style="width: 200px; height: 200px;">
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
                     @endforeach 
                 @endif
-                <div class="card-body">
+                
             </div>
         </div>
     </div>

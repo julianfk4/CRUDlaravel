@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Post;
-use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-class ProductosController extends Controller
+class PostController extends Controller
 {
     public function index(int $id)
     {
-        $producto = Producto::find($id);
+        $producto = Post::find($id);
 
         return view('productos.detail', compact('producto'));
     }
@@ -32,7 +30,7 @@ class ProductosController extends Controller
         ]);
     
          // Crear el producto en la base de datos
-        Producto::create($data);
+        Post::create($data);
         // Redirigir a una ruta (por ejemplo, al listado de productos) con un mensaje de éxito
         return redirect()->to(url('dashboard/' . Auth::user()->id))
             ->with('success', 'Producto registrado correctamente');
@@ -48,8 +46,8 @@ class ProductosController extends Controller
     }
     public function borrar(int $id)
     {
-        Producto::destroy($id);
-        Post::where('id_user', $id)->delete();
-        return 'dashboard/' . Auth::user()->id;
+        
+
+        return "borrando";
     }
 }
