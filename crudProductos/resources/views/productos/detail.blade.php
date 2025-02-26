@@ -11,9 +11,15 @@
                     <h3 class="card-title">{{ $producto->name }}</h3>
                     <p class="card-text text-muted">ID: {{ $producto->id }}</p>
                     <p class="card-text text-muted">{{ $producto->descripción }}</p>
+                    @if ($producto->id_user == Auth::user()->id)
+                        <a class="btn btn-primary">editar</a>
+                        <a class="btn btn-danger">borrar</a>
+                    @endif
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
+
 @endsection

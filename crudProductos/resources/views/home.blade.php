@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if (!isset($user) || $user == null)
+    @php
+        return redirect()->to(url('dashboard/' . Auth::user()->id));
+    @endphp
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,7 +17,7 @@
                 @if ($producto)
                     <div class="container mt-6">
                     <div class="row">
-                        @foreach ($productos as $prod)
+                        @foreach ($producto as $prod)
                             <div class="col-md-4"> 
                                 <a href="/detail/{{ $prod->id }}">
                                 <div class="card shadow-sm">
@@ -30,7 +35,8 @@
                 @else 
                     <p class="h8"> no existen</p>
                 @endif
-                <a class="btn btn-primary" href="/crear/{{ $user->id }}">Subir</a>
+              
+                <a class="btn btn-primary" href="/crear/{{ Auth::user()->id }}">Subir</a>
                 <hr></hr>
                 <p class="h8"><u> Mis comentarios:</u></p>
                 @if ($post)
