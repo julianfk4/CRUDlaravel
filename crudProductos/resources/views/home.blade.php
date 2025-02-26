@@ -10,29 +10,32 @@
                 <div class="card-body">
                 <p class="h8"><u> Mis productos:</u></p>
                 @if ($producto)
-                    @foreach ($producto)
-                    <p>producto</p>
+                    @foreach($producto as $prod)
+                        <p>{{ $prod->nombre }}</p>
                     @endforeach
-                    <button class="btn btn-primary">Subir</button>
                 @else
-                    <p class="h8"> no existen</p><button class="btn btn-primary">Subir</button>
-                    
+                    <p class="h8"> no existen</p>
                 @endif
+                <a class="btn btn-primary" href="/crear/{{ $user->id }}">Subir</a>
                 <hr></hr>
                 <p class="h8"><u> Mis comentarios:</u></p>
                 @if ($post)
                     <p class="h8"> estos</p>
-                    <button class="btn btn-primary">Subir</button>
+                    
                 @else
-                    <p class="h8"> no existen</p><button class="btn btn-primary">Subir</button>
+                    <p class="h8"> no existen</p>
                     
                 @endif
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">Productos de la comunidad</div>
+                @if ($producto)
+                    @foreach ($productos as $prods)
+                        <p>producto</p>
+                    @endforeach 
+                @endif
                 <div class="card-body">
-                
             </div>
         </div>
     </div>
