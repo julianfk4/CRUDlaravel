@@ -19,4 +19,6 @@ Route::get('dashboard/{id}', [App\Http\Controllers\DashboardController::class, '
 
 Route::get('crear/{id}', [App\Http\Controllers\ProductosController::class, 'crear'])->name('crear');
 
-Route::get('guardar', [App\Http\Controllers\ProductosController::class, 'guardar'])->name('guardar');
+Route::post('guardar', [App\Http\Controllers\ProductosController::class, 'guardar'])->name('guardar');
+
+Route::get('detail/{id}', [App\Http\Controllers\ProductosController::class, 'index'])->name('index');

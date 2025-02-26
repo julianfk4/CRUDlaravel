@@ -1,23 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
 {
-    public function index()
+    public function index(int $id)
     {
-        return "mostrando";
+        $producto = Producto::find($id);
+
+        return view('productos.detail', compact('producto'));
     }
+
+
     public function crear(int $id)
     {
-        return "creando";
+        return view("productos.crear",  compact('id'));
     }
-    public function guardar()
-    {
-        return "guardando";
+    
+    public function guardar(Request $request){
+        // Validar los datos del formulario
+        $data = $request->validate([
+            'name'         => 'required|string|max:255',
+            'imagen'       => 'required|string|max:255',
+            'precio'       => 'required|numeric',
+            'descripción'  => 'required|string',
+            'id_user'      => 'required|exists:users,id', // Verifica que el id_user exista en la tabla users
+        ]);
+    
+         // Crear el producto en la base de datos
+        Producto::create($data);
+        // Redirigir a una ruta (por ejemplo, al listado de productos) con un mensaje de éxito
+        return redirect()->route('login')
+            ->with('success', 'Producto registrado correctamente');
     }
+        
     public function editar()
     {
         return "editando";

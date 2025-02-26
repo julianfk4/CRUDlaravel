@@ -10,10 +10,24 @@
                 <div class="card-body">
                 <p class="h8"><u> Mis productos:</u></p>
                 @if ($producto)
-                    @foreach($producto as $prod)
-                        <p>{{ $prod->nombre }}</p>
-                    @endforeach
-                @else
+                    <div class="container mt-4">
+                    <div class="row">
+                        @foreach ($productos as $prod)
+                            <div class="col-md-4"> 
+                                <a href="/detail/{{ $prod->id }}">
+                                <div class="card shadow-sm">
+                                    <div class="card-body d-flex flex-column align-items-center">
+                                        <p class="fw-bold">{{ $prod->name }}</p>
+                                        <img src="{{ $prod->imagen }}" alt="Imagen del producto" class="img-fluid" style="width: 200px; height: 200px;">
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                @else 
                     <p class="h8"> no existen</p>
                 @endif
                 <a class="btn btn-primary" href="/crear/{{ $user->id }}">Subir</a>
@@ -32,7 +46,7 @@
                 <div class="card-header">Productos de la comunidad</div>
                 @if ($producto)
                     @foreach ($productos as $prods)
-                        <p>producto</p>
+                        <p>{{ $prods->name }}</p>
                     @endforeach 
                 @endif
                 <div class="card-body">

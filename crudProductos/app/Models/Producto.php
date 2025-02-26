@@ -10,7 +10,7 @@ class Producto extends Model
         'name',
         'imagen',
         'precio',
-        'descripcion',
+        'descripción',
         'id_user',
     ];
 
