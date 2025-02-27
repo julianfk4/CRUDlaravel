@@ -11,8 +11,9 @@ class ProductosController extends Controller
     public function index(int $id)
     {
         $producto = Producto::find($id);
+        $comentarios = Post::all();
 
-        return view('productos.detail', compact('producto'));
+        return view('productos.detail', compact('producto','comentarios'));
     }
 
 
@@ -50,6 +51,6 @@ class ProductosController extends Controller
     {
         Producto::destroy($id);
         Post::where('id_user', $id)->delete();
-        return 'dashboard/' . Auth::user()->id;
+        return redirect(url('dashboard/' . Auth::user()->id));
     }
 }

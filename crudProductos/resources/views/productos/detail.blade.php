@@ -16,9 +16,28 @@
                         <a class="btn btn-danger" href="/borrar/{{ $producto->id }}">borrar</a>
                     @endif
                 </div>
-                
             </div>
         </div>
+    </div>
+</div>
+<div class="mt-4">
+<div class="card mb-3">
+<div class="card-body">
+    @if ($comentarios)
+    <p>No hay comentarios aún. ¡Sé el primero en comentar!</p>
+        @foreach( $comentarios as $coment )
+        
+            <p class="card-text">{{ $coment->comentario }}</p>
+            <small class="text-muted">
+            {{ $coment->valoración }}
+            </small>
+        
+        @endforeach
+    @else
+        <p>No hay comentarios aún. ¡Sé el primero en comentar!</p>
+    @endif
+    <a class="btn btn-primary" href="/crear/{{ Auth::user()->id }}">Comentar</a>
+    </div>
     </div>
 </div>
 
