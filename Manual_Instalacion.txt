@@ -1,0 +1,4 @@
+Archivo .env se encuentra en el .env.example, aunque en un proyecto real esto puede ser peligroso en este trabajo facilita a la hora de abrir el ejercicio. 
+Solo abria que renombrarlo a .env. 
+Después es conveniente crear una base de datos llamada crudproductos.
+Y con una terminal abierta en la carpeta del proyecto ejecutariamos composer install y php artisan migrate.
