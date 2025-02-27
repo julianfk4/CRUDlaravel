@@ -36,15 +36,6 @@
                     <p class="h8"> no existen</p>
                 @endif
                 <a class="btn btn-primary" href="/crear/{{ Auth::user()->id }}">Subir</a>
-                <hr></hr>
-                <p class="h8"><u> Mis comentarios:</u></p>
-                @if ($post)
-                    <p class="h8"> estos</p>
-                    
-                @else
-                    <p class="h8"> no existen</p>
-                    
-                @endif
                 </div>
             </div>
             <div class="card">

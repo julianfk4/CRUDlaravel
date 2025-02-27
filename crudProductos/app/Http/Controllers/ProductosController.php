@@ -49,8 +49,9 @@ class ProductosController extends Controller
     }
     public function borrar(int $id)
     {
+        Post::where('id_prod', $id)->delete();
         Producto::destroy($id);
-        Post::where('id_user', $id)->delete();
+        
         return redirect(url('dashboard/' . Auth::user()->id));
     }
 }
