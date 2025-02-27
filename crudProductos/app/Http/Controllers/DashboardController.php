@@ -14,8 +14,8 @@ class DashboardController extends Controller
         $user = User::findOrFail($id);
         $id_user = $id;
         
-        $post = Post::find($id_user);
-        //$producto = Producto::find($id_user);
+        $post = Post::where('id_user', $id_user)->get();
+        
         $producto = Producto::where('id_user', $id_user)->get();
         $productos = Producto::all();
         return view("home", compact('user','post','producto','productos'));

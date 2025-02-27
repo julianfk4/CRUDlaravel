@@ -12,7 +12,7 @@ class ProductosController extends Controller
     {
         $producto = Producto::find($id);
         $comentarios = Post::all();
-
+        
         return view('productos.detail', compact('producto','comentarios'));
     }
 
@@ -23,18 +23,18 @@ class ProductosController extends Controller
     }
     
     public function guardar(Request $request){
-        // Validar los datos del formulario
+        
         $data = $request->validate([
             'name'         => 'required|string|max:255',
             'imagen'       => 'required|string|max:255',
             'precio'       => 'required|numeric',
             'descripción'  => 'required|string',
-            'id_user'      => 'required|exists:users,id', // Verifica que el id_user exista en la tabla users
+            'id_user'      => 'required|exists:users,id',
         ]);
     
-         // Crear el producto en la base de datos
+        
         Producto::create($data);
-        // Redirigir a una ruta (por ejemplo, al listado de productos) con un mensaje de éxito
+        
         return redirect()->to(url('dashboard/' . Auth::user()->id))
             ->with('success', 'Producto registrado correctamente');
     }

@@ -14,25 +14,19 @@ class PostController extends Controller
     }
 
 
-    public function crear(int $id)
-    {
-        return view("productos.crear",  compact('id'));
-    }
     
-    public function guardar(Request $request){
-        // Validar los datos del formulario
+    public function guardarc(Request $request){
+        
         $data = $request->validate([
-            'name'         => 'required|string|max:255',
-            'imagen'       => 'required|string|max:255',
-            'precio'       => 'required|numeric',
-            'descripción'  => 'required|string',
-            'id_user'      => 'required|exists:users,id', // Verifica que el id_user exista en la tabla users
+            'comentario'  => 'required|string|max:255',
+            'valoracion'  => 'required|string|max:255', 
+            'id_user'     => 'required|exists:users,id', 
+            'id_prod'     => 'required|exists:productos,id',
         ]);
-    
-         // Crear el producto en la base de datos
+        
         Post::create($data);
-        // Redirigir a una ruta (por ejemplo, al listado de productos) con un mensaje de éxito
-        return redirect()->to(url('dashboard/' . Auth::user()->id))
+        
+        return redirect()->to(url('detail/' . $request->id_prod ))
             ->with('success', 'Producto registrado correctamente');
     }
         
@@ -44,10 +38,11 @@ class PostController extends Controller
     {
         return "actualizando";
     }
-    public function borrar(int $id)
+    public function borrarc(int $id)
     {
-        
-
-        return "borrando";
+        $coment = Post::find($id);
+        $idvuelta = $coment->id_prod;
+        Post::destroy($id);
+        return redirect(url('detail/' . $idvuelta));
     }
 }

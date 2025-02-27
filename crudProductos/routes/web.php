@@ -26,3 +26,7 @@ Route::get('detail/{id}', [App\Http\Controllers\ProductosController::class, 'ind
 Route::get('edit/{id}', [App\Http\Controllers\ProductosController::class, 'editar'])->name('editar');
 
 Route::get('borrar/{id}', [App\Http\Controllers\ProductosController::class, 'borrar'])->name('borrar');
+
+Route::post('guardarc', [App\Http\Controllers\PostController::class, 'guardarc'])->name('guardarc');
+
+Route::get('borrarc/{id}', [App\Http\Controllers\PostController::class, 'borrarc'])->name('borrarc');
